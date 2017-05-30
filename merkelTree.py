@@ -114,6 +114,7 @@ class Tree:
 class Client:
     def __init__(self, tree):
         self.t = tree
+        self.root_hash = tree.root.hash
         logging.info("client initialization complete")
 
     def read(self, block_id):
@@ -126,10 +127,14 @@ class Client:
         invalid = False
         for (level, left, right) in hashes:
             if level < self.t.levels: # not the bottom(data) level
+                if level == 0:
+                    if left != self.root_hash:
+                        invalid = True
                 if ((hash_below != left) and (hash_below != right)):
                     invalid = True
 
             hash_below = str(abs(hash(left + right)))
+
 
         if invalid:
             logging.info("invalid!")
@@ -140,6 +145,7 @@ class Client:
     def write(self, block_id, new_data):
         logging.info("writing {} -> block #{}".format(new_data, block_id))
         self.t.write(block_id, new_data)
+        self.root_hash = self.t.root.hash
 
 def demo(leaves):
 
