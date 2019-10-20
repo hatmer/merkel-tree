@@ -6,7 +6,7 @@ logging.basicConfig(filename='output.log', level=logging.DEBUG, format='%(asctim
 
 class Node:
     """
-    Inner nodes that form merkel tree
+    Inner nodes that form Merkle tree
     """
     def __init__(self, left_child, right_child):
         self.hash = None
@@ -25,7 +25,7 @@ class Node:
 
 class Leaf():
     """
-    Leaf Nodes on merkel Tree that contain data
+    Leaf Nodes on Merkle Tree that contain data
     """
     def __init__(self, x):
         self.data = x
@@ -149,7 +149,7 @@ class Client:
 
 def demo(leaves):
 
-    logging.info("Welcome to the Merkel Tree demo!")
+    logging.info("Welcome to the Merkle Tree demo!")
 
     # create Tree
     logging.info("Initializing tree...")
@@ -169,7 +169,7 @@ def demo(leaves):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("usage: python3 merkelTree.py <number_of_data_blocks>")
+        print("usage: python3 merkleTree.py <number_of_data_blocks>")
         
     else:
         logging.info('Initializing...')
