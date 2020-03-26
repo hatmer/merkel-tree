@@ -20,7 +20,6 @@ class Node:
         l = self.left.recompute()
         r = self.right.recompute()
         self.hash = str(abs(hash(l + r)))
-        #self.hash = str(abs(hash(self.left.recompute() + self.right.recompute())))
         return self.hash
 
 class Leaf():
